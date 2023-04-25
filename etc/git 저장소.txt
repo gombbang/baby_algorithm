@@ -24,3 +24,7 @@ access token 갈겨
 git remote repository는 git bash로는 절대 직접 만들 수 없나봐..
 https://velog.io/@falling_star3 보고 같이 배우자.
 
+https://blog.naver.com/hirit808/222480119618
+저장소에 push 할 때마다 login 해야하는 문제 수정..
+2.31 -> 2.40, 토큰 사용
+
