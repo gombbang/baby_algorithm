@@ -1,0 +1,51 @@
+4_단어뒤집기
+
+
+StringBuilder의 reverse 메서드
+문자열을 다루는 StringBuilder
+String reversed = new StringBuilder(str).reverse().toString();
+
+String은 더하기, replace 등을 하면 새로운 객체가 생성된다.
+자꾸 객체가 만들어짐
+StringBuilder는 문자 추가, delete, replace 할때마다 그 처음 만든 객체를 사용해서 하므로 메모리 낭비가 있지 않다.
+-> 무거워지지 않음
+
+
+특정문자만 역으로 바꾸라는 경우에는 StringBuilder(str).reverse()를 쓸 수 없다.
+일일이 하나씩 뒤집는 게 필요하다.
+짝꿍끼리 교환을 해야함.
+
+char[] s = x.toCharArray();
+String front = "";
+String back = "";
+for (int i = 0; i<s.size() /2 ; i++) 
+{
+front += s[s.size()-i];
+back += s[i];
+}
+if (s.size()%2 == 1)
+answer.add(front+s[s.size()+1] + back);
+else 
+answer.add(front+back);
+
+
+내용이 조금 복잡하다.
+lt<rt가 더 좋다.
+배열에 대한 이해가 더 있고
+포인터, 커서, 이터레이터에 대한 이해가 있는거니께..
+그렇다고 위에가 틀린건 아님 
+그냥 이게 더 깔끔하고 좋은 코드라는 것뿐
+
+char[] s = x.toCharArray();
+int lt=0, rt = s.length()-1;
+while(lt<rt)
+{
+	char tmp=s[lt];
+	s[lt] = s[rt];
+	s[rt] = tmp;
+	lt++;
+	rt--;
+}
+String tmp = String.valueOf(s);
+Strngi.valueOf() : char array를 string으로 변경해주는 내용
+	 

@@ -1,0 +1,19 @@
+https://hianna.tistory.com/534
+하이라이트 기능 마음에 드네
+
+str.split(" ")
+
+
+
+str.indexOf(' ') : 띄어쓰기를 먼저 발견하면 그때 인덱스를 리턴한다.
+		없으면 -1을 리턴한다.
+
+str.substring(n,m) : n부터 m-1까지 내용을 뚝 짤라서 리턴한다.
+str은 그대로 유지된다.
+
+str.substring(0,m) : 인덱스 0부터 m-1까지 내용을 뚝 짤라서 리턴한다.
+때문에 중간중간부터 잘라주려면 아래 작업 필요
+str = str.substring(m+1) : m위치가 띄어쓰기라면 인덱스 m+1부터 뒤에 쭉을 이어가야 하므로, m+1임.
+-> substring(startIndex);
+
+이때는 마지막 단어 처리가 필요
