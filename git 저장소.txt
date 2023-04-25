@@ -1,0 +1,26 @@
+git init
+로컬 저장소 생성
+
+git add -> commit
+로컬 저장소 첫 발자국
+
+git remote add origin https://github.com/[nickname]/[new_repoistory_name]
+깃 생성
+
+git push -u origin master
+생성 실패
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/gombbang/baby_algorithm/'
+
+원인 : Password-based authentication for Git has been removed in favor of more secure authentication methods.
+For more information, see "About authentication with SAML single sign-on" and "Authorizing a personal access token for use with SAML single sign-on."
+귀찮으니 걍 그러려니 하자.
+
+access token 갈겨
+
+
+
+git remote repository는 git bash로는 절대 직접 만들 수 없나봐..
+https://velog.io/@falling_star3 보고 같이 배우자.
+
