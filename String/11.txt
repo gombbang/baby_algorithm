@@ -1,0 +1,20 @@
+문자열 압축
+이것도 문제 해결력 관련
+
+kkkttesst -> k3t2es2t
+String answer;
+char target = 0;
+int cnt = 1;
+for (char c : ... .toCharArray()) {
+	if (target == 0)
+		target = c;
+	if (c == target) cnt ++;
+	else {
+		answer += target;
+		if (cnt >1)
+			answer += cnt;
+		cnt = 1;
+		target = 0;
+	}
+}
+return answer;

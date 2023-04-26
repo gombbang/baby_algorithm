@@ -1,0 +1,18 @@
+각 합을 하나씩 만들고 거기서 max 값 매번 찍어서 max 총 내용을 보냄
+int [][] arr = new int[5][5];
+	for (i 0:5)
+		for(j 0:5)
+			arr[i][j] = nextInt();
+			next Int로 주르륵
+각 대각선의 합 구해두고
+for (i 0:5)
+	for(j 0:5)
+		if (arr[i][0]인 경우, j == 0)
+			가로 값 구해서 max 체크
+		세로 값 구해서 max 체크
+
+
+return max;
+
+아.. 문제 이해를 잘못했다.
+ㄴㄴ 맞았음 ㅎㅎ;

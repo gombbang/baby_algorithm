@@ -1,0 +1,52 @@
+replaceAll은 정규표현식 가능.
+replaceAll(바꿀 내용(target), 바뀐 내용);
+	target에 [] 내부에 규칙 설정으로 정규표현식 가능, ex) [^A-Z] : 대문자 외에 모든것
+* replace는 정규표현식 불가
+
+숫자 : 48 - 57 ('0' -'9')  -> char - 48 == char로 표현하는 진짜 숫자 -> string
+숫자 체크 : char.isDigit();
+영어 : 65-90(대문자)  97-122 (소문자) // 사이, A와 a의 차이는 32
+영어 관련 : char.isAlphabetic(), toUpperCase, toLowerCase, ...
+
+
+Scanner scanner = new Scanner(System.in()); 했을 때
+1) next() : 문자열 하나, 띄어쓰기 혹은 엔터
+2) nextInt() : 숫자 하나
+3) nextLine() : 한 줄 전체, 엔터
+
+
+10. 숫자간 간격 
+- 문제 해결력이 부족함을 느낌, 나는 걍 앞에서의 위치와 뒤에서의 위치를 다 체크해서 고려하려고 함.
+문제를 복잡하게 처리하려고 한다.
+단순하게 처리하려고 노력해야한다.
+
+
+https://velog.io/@kimmjieun/Java-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%9E%85%EC%B6%9C%EB%A0%A5-%ED%8C%81
+* Scanner 보다는 BufferedReader가 더 빠르다.
+사용법 차이 비교
+Scanner scanner = new Scanner(System.in);
+
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+= br.nextLine();
+
+https://sorjfkrh5078.tistory.com/93 (서술력 좋다.)
+1. 개행 문자를 만나거나 buffer가 꽉차면 전송.
+2. 모든 입력 데이터를 string으로 인식
+	-> Integer.parseInt(br.readLine());
+	-> Long.parseLong(br.readLine());
+	와 같은 처리 필요
+scanner : sc.nextInt(); sc.nextLong(); 으로 가능
+3. BufferedReader는 무조건 try-catch 문이나 throws 문을 통해 사용자가 직접 예외 처리를 해줘야 한다.
+헐..
+try {
+	String str = br.nextLine();
+	br.close();
+} catch (IOException e) {
+}
+Checked Exception으로 반드시 예외 처리를 해줘야 함.. (컴파일 시 발생되는 예외)
+반면에 Scanner는 unChecked(Runtime) Exception이라 명시적 예외처리 필요 없음 (컴파일 통과 후 런타임 시 발생할 수 있는 예외)
+
+
+
+
+

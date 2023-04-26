@@ -1,0 +1,12 @@
+int rank = 1;
+for (int i = 0; i<n; i ++) {
+	for (int j=i+1; j<n ; j++) {
+		if (arr[j]> arr[i])
+			rank ++;
+	}
+	System.out.print(rank + " ");
+	rank = 1;
+}
+
+굿, 정답.
+	놉, j도 0에서부터 시작해야함.

@@ -1,0 +1,35 @@
+피보나치 수열
+n 3 ~ 45
+n은 항.
+
+int[] arr = new int[n];
+arr[0] = 1;
+arr[1] = 1;
+for (int i = 2; i<n;i++)
+arr[i] = arr[i-1] + arr[i-2];
+
+return arr;
+
+for (int a : arr)
+	System.out.print(a + " ");
+
+배열을 쓰지 말라고 하면?
+
+int a0 = 1;
+int a1 = 1;
+fibonaci(n,a,b,2);
+System
+System.out.println(fibonaci(n,a,b,now) + " ");
+
+fibonaci() {
+	tmp = a;
+	a = a+b;
+	b = a;
+	System.out.print(a + " ");
+if (now == n) 
+	return;
+else 
+	return fibonaci(n,a,b,now+1);
+
+굳이 이러라는 뜻이 아니었음
+solution 함수에서 system.print 하는 내용으로 수정했네

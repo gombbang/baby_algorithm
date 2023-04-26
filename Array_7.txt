@@ -1,0 +1,12 @@
+점수 가산 문제
+
+point = 0;
+for(~)
+if (arr[i-1]==1)
+	point += 1;
+else 
+	point = 1;
+if (arr[i]==1)
+	answer += point;
+
+이게 더 ez한거같다. 뿌-듯

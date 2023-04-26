@@ -1,0 +1,36 @@
+가위 바위 보
+1 2 3
+1은 3 이김
+2는 1 이김
+3은 2 이김
+
+
+int round = nextInt();
+int[] a = new int[round];
+int[] b = new int[round];
+for (int i = 0 ; i < round ; i++)
+	System.println(fight(a[i],b[i]));
+
+char fight (int a, int b) {
+char winner;
+if (a == b) return 'D';
+if (a == 3 ) {
+	...
+}
+else if ( a==2) { ... }
+else { ... }
+return winner;
+}
+
+
+
+
+
+이걸 더 깔끔하게 했네.
+	if (a == b) return 'D'
+	if (a == 3 && b == 1) return 'b'
+	else if (a == 2 && b == 3) return 'b'
+	else if (a == 1 && b == 2) return 'b'
+	else 
+	return 'a';
+의 형태로 해서...!
