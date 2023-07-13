@@ -1,0 +1,68 @@
+import java.util.Arrays;
+class Solution {
+    
+    private static int n, m;
+    private static int[] emticonsPricePercent; // 원소를 저장할 배열
+    private static boolean[] visited; // 중복을 제거하기 위한 방문 처리
+    private static int[][] u;
+    private static int[] e;
+    private static int[] answer = new int[2];
+    
+        
+    private static void repeatedPermutation(int cnt) {
+        if (cnt == m) {
+            logic(emticonsPricePercent);
+            // System.out.println(Arrays.toString(emticonsPricePercent));
+            
+            return;
+        }
+        for (int i = 1; i <= n; i++) {
+            emticonsPricePercent[cnt] = i;
+            repeatedPermutation(cnt + 1);
+        }
+    }
+    
+    
+    
+    public static int[] logic (int[] emticonsPricePercent ) {
+        int[] answerTemp = new int[2];
+        int personNumber = 0;
+        int price = 0;
+        
+        for (int[] user: u) {
+            int userPercent = user[0];
+            int userLimitPrice = user[1];
+            int userPrice = 0;
+            for (int i =0; i< emticonsPricePercent.length; i++) {
+                if (emticonsPricePercent[i] * 10 >= userPercent)
+                    userPrice += (int)((e[i]/10) * (10 - emticonsPricePercent[i]));
+            }
+            if (userPrice >= userLimitPrice) {
+                personNumber ++;
+            }
+            else 
+                price += userPrice;
+        }
+        answerTemp[0] = personNumber;
+        answerTemp[1] = price;
+        if (u.length < 4)
+            System.out.println("[ " + answerTemp[0] + " , " + answerTemp[1] + " ]");
+        if (answerTemp[0]>answer[0])
+            answer = answerTemp;
+        else if (answerTemp[0] == answer[0] && answerTemp[1] > answer[1])
+            answer = answerTemp;
+        return answerTemp;
+    }
+
+    
+    public int[] solution(int[][] users, int[] emoticons) {
+        u = users;
+        e = emoticons;
+        n=4;
+        m=emoticons.length;
+        emticonsPricePercent = new int[m];
+        repeatedPermutation(0);
+        System.out.println("answer : " + "[" + answer[0] + "," + answer[1] + "]");
+        return answer;
+    }
+}
