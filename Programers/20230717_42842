@@ -1,0 +1,28 @@
+class Solution {
+    private int[] temp = new int[2];
+    private void calculate (int x, int y, int yellow) {
+        if (x==y) {
+            temp[0] = x;
+            temp[1] = y;
+            // temp = "[" + x + ", " + y + "]";
+            return;
+        }
+        if ((x-2)*(y-2) == yellow) {
+            temp[0] = x;
+            temp[1] = y;
+            // temp = "[" + x + ", " + y + "]";
+            return;
+        }
+        else 
+            calculate(x-1,y+1,yellow);
+        return;
+    }
+    public int[] solution(int brown, int yellow) {
+        
+        
+        int[] answer = {};
+        calculate(brown/2 + 1, 1,yellow);
+        return temp;
+    }
+}
+// 가로는 세로보다 길거나 같다.
