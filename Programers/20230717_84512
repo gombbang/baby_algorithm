@@ -1,0 +1,32 @@
+import java.util.HashMap;
+
+class Solution {
+    private static HashMap<String,Integer> map = new HashMap<>();
+    private static int number=0;
+    private void tracking (String now,char c, int depth) {
+        depth ++;
+        number ++;
+        now += c;
+        map.put(now,number);
+
+        if (depth < 5) {
+            tracking(now,'A',depth); // a;
+            tracking(now,'E',depth); // e;
+            tracking(now,'I',depth); // i;
+            tracking(now,'O',depth); // o;
+            tracking(now,'U',depth); // u;
+        }
+    }
+
+    public int solution(String word) {
+        word = word.replaceAll("\"","");
+        tracking("",'A',0);
+        tracking("",'E',0);
+        tracking("",'I',0);
+        tracking("",'O',0);
+        tracking("",'U',0);
+
+        int answer = map.get(word);
+        return answer;
+    }
+}
