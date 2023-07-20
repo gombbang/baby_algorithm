@@ -1,3 +1,5 @@
+// https://tosuccess.tistory.com/202
+
 class Solution {
     public long[] solution(long[] numbers) {
         long[] answer = new long[numbers.length];
