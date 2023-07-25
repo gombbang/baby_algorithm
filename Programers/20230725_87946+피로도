@@ -1,0 +1,37 @@
+class Solution {
+    
+    static int answer;
+    static int[] check;//완전 탐색을 하기 위해서 정의
+    static int[][] d;
+    static int K;
+    
+    static void dfs(int n){//완전 탐색
+        if(answer<n){ answer = n; }
+        for(int i=0; i<check.length; i++){
+            if(check[i]==1){ continue; }
+            if(K<d[i][0]){ continue; }
+            check[i] = 1;
+            K -= d[i][1];
+            dfs(n+1);
+            check[i] = 0;
+            K += d[i][1];
+        }
+    }
+   
+    public int solution(int k, int[][] dungeons) {
+        
+        K = k;
+        answer =0;
+        check = new int[dungeons.length];
+        d = new int[dungeons.length][2];
+        for(int i=0; i<dungeons.length; i++){
+            for(int j=0; j<2; j++){
+                d[i][j] = dungeons[i][j];
+            }
+        }
+        
+        dfs(0);
+        
+        return answer;
+    }
+}
