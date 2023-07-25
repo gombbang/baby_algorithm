@@ -1,0 +1,64 @@
+class Solution {
+    
+//     반값까지만 보고 그 뒤는 버리는게 맞긴 함.
+//     근데 1~ n 그 값,
+//     그 이후의 값.
+//     모두 체크해보아야 함
+    
+//     1부터 더하기 시작한 값
+//     연속된 수여야하므로 앞에서 부터 자르거나 해야함
+//     홀수인 경우 반으로 나눈 나머지를 중심으로 앞 뒤 값도 하나의 케이스가 됨
+//     앞에서부터 값을 떼어가는 방법
+//     slide 뭐시기 같은 그 내용 같음
+
+//     1 부터 n 해서 n을 구함
+//     값이 같으면 + 1
+//     값이 작으면 뒤에 추가
+//     값이 크면 앞에거 떼기....  너무 단순한데
+    
+    private int compareValue = 0;
+    private int startPoint = 0;
+    private int endPoint = 0;
+    
+    private void init(int n) {
+        startPoint = 1;
+        endPoint = 1;
+        compareValue = 1;
+        while (true) {
+            if (compareValue < n) {
+                compareValue += ++endPoint;
+            } else 
+                return;
+        }
+    }
+    
+    private int check(int n) {
+        int answer = 1;
+        
+        while (endPoint <= (n / 2) + 1) {
+            // if (startPoint >= endPoint)
+            //     break;
+            // System.out.println("compareValue : " + compareValue + ", endPoint : " + endPoint + ", startPoint : " + startPoint);
+            // System.out.println("n : " + n + ", answer : " + answer);
+            if (compareValue > n) {
+                compareValue -= startPoint++;
+            } else if (compareValue < n) {
+                compareValue += ++endPoint;
+            } else {
+                answer++;
+                compareValue -= startPoint++;
+            }
+        }
+        
+        return answer;
+    }
+    
+    public int solution(int n) {
+        if (n == 1 || n == 2)
+            return 1;
+        
+        init(n);
+        int answer = check(n);
+        return answer;
+    }
+}
