@@ -1,0 +1,108 @@
+// 많이 먹는 단품 메뉴 2개 이상 -> 코스메뉴, 최소 2명 이상의 손님으로 부터 주문된 단품메뉴만
+// 요리 X는 누구 누구에게 받아서 총 n번 주문 됌
+// 각 값은 한 손님이 주문한 단품메뉴들 == orders
+// A B C D E등이 메뉴 이름이다.
+// 추가하려는 코스 요리 구성 단품메뉴 갯수 : course
+// 메뉴 구성을 문자열 형태로 return
+// orders를 사용해서 각 course[n]를 만들어라
+// 단품메뉴는 2 ~ 20개, 각 이름은 2 이상 10 이하의 문자열
+// course의 갯수는 1이상 10 이하
+// 각 course는 2 이상 10 이하의 갯수로 이뤄질 것
+
+// orders[x]에 있는 문자열 길이 course[n]개의 갯수만큼 
+// 동일한 애들을 각 orders[n]에 있는지 찾아야한다.
+
+// 해당 길이 만큼의 문자열을 각 위치에서 선정
+// 만약 orders[x]가 그 길이보다 짧으면 넘어간다.
+// 2개짜리 3개짜리 4개짜리를 다 뒤져서 찾아낸 다음에
+// 값을 배열로 해서 받아오고
+// 배열을 합친뒤에
+// 오름차순으로 정렬하기
+
+import java.util.List;
+import java.util.ArrayList;
+
+class Solution {
+    private String[] target;
+    private int size;
+    private int index;
+    private List<String> list = new ArrayList<>();
+    
+    private char[] compare (char[] compareChar, String[] target, int size , int index) {
+        
+        if (index+1 < target.length) {
+            for (int i = index+1; i < target.length; i++) {
+                char[] t = target[i].toCharArray();
+                int n = 0;
+                for (int j = 0; j<t.length;j++) {
+                    if (t[j] == compareChar[n])
+                        n++;
+                    else 
+                        continue;
+                    if (n == size)
+                        return compareChar;
+                }
+            }
+        }
+        return null;
+    }
+    
+    
+    private void comb(char[] data, Boolean[] visit, int depth, int n, int r) {
+        if (r == 0) {
+            String chars = "";
+            for (int i =0; i<n;i++) {
+                if (visit[i]) {
+                    chars += data[i];
+                }
+            }
+            char[] ret = compare(chars.toCharArray(),target, size, index);
+            if (ret != null) {
+                list.add(String.valueOf(ret));
+            }
+        }
+        
+        visit[depth] = true;
+        comb(data,visit,depth+1,n,r-1);
+        visit[depth] = false;
+        comb(data,visit,depth+1,n,r);
+    }
+    
+    
+    private void checkNumber(int number) {
+        for (int i = 0; i<target.length; i++) {
+            if (target[i].length() > 0 ) {
+                char[] data = target[i].toCharArray();
+                index = i;
+                size = number;
+                Boolean[] visit = new Boolean[data.length];
+                comb(data,visit,0,data.length,number);
+            }
+        }
+        return ;
+    }
+    
+    public String[] solution(String[] orders, int[] course) {
+        target = new String[orders.length];
+        String[] answer = {};
+        List<String> temp = new ArrayList<>();
+        for (int i =0; i<course.length; i++) {  
+            for (int j = 0; j<orders.length; j++) {
+                if (orders[j].length() < course[i])
+                    continue;
+                else 
+                    target[j] = orders[j];
+            }
+            checkNumber(course[i]);
+           // answer = sol();
+            
+            // for (int k = 0; k<target.length; k++) {
+            //     System.out.print(target[k] + " ");
+            //     target[k] = "";
+            // }
+            // System.out.println();
+        }
+        System.out.println(list);
+        return answer;
+    }
+}
