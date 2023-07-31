@@ -28,3 +28,5 @@ class Solution {
         return cnt;
     }
 }
+
+// https://chat.openai.com/share/c64c3bb7-266e-43f3-b656-6f816132bfa1
