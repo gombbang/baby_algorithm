@@ -18,9 +18,14 @@ class Solution {
         if (answers.size() > 0 && Collections.min(answers) < count)
             return;
         
-        dfs (number + n,y,n, count+1);
+        //dfs (number + n,y,n, count+1);
+        //dfs (number * 2,y,n, count+1);
+        //dfs (number * 3,y,n, count+1);
+
+// 이렇게 하니까 통과가 더많아지는 얍시 발생 (50 -> 62.5 ㅋㅋㅋㅋ)
         dfs (number * 2,y,n, count+1);
         dfs (number * 3,y,n, count+1);
+        dfs (number + n,y,n, count+1);
     }
     
     
