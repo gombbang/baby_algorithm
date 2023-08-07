@@ -1,0 +1,62 @@
+import java.util.Deque;
+import java.util.LinkedList;
+
+class Solution {
+    int answer = 1000000;
+    int[] visited = new int[1000001];
+    
+    
+    public int solution(int x, int y, int n) {
+        Deque<int[]> deque = new LinkedList<>();
+        int[] t = new int[2];
+        t[0] = x;
+        t[1] = 0;
+        deque.offer(t);
+        while (deque.size() > 0) {
+            t = deque.poll();
+            if (visited[t[0]] != 0 && visited[t[0]] < t[1]) {
+                continue;
+            } else 
+                visited[t[0]] = t[1];
+            
+            if (t[0] == y) {
+                return t[1];
+//                 bfs니까 맨 처음 나온게 제일 짧은 거리라서 아래 내용이 필요 없었을 것.
+//                 t = deque.poll(); 대신 t = deque.pollLast(); 한 것 자체가 오류였음.
+                // if (visited[y] > t[1] || visited[y] == 0) 
+                //     visited[y] = t[1];
+                // continue;
+            }
+            
+            if (t[0] < y) {
+                int[] nt = new int[2];
+                nt[1] = t[1] + 1;
+                nt[0] = t[0] * 3;
+                if (nt[0] <= y)
+                    deque.offer(nt);
+                
+                
+                nt = new int[2];
+                nt[1] = t[1] + 1;
+                nt[0] = t[0] * 2;
+                if (nt[0] <= y)
+                    deque.offer(nt);
+                
+                nt = new int[2];
+                nt[1] = t[1] + 1;
+                nt[0] = t[0] + n;
+                if (nt[0] <= y)
+                    deque.offer(nt);
+            }
+        }
+        if (visited[y] == 0)
+            return -1;
+        
+        return visited[y];
+    }
+} 
+
+
+
+
+
