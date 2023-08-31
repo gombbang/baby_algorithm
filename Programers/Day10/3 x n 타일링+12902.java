@@ -14,3 +14,4 @@ class Solution {
             return 0;
     }
 }
+// https://school.programmers.co.kr/questions/42870
