@@ -32,6 +32,7 @@ class Solution {
 //         ret == reversed value
         StringBuffer sb = new StringBuffer(ret);
         ret = sb.reverse().toString();
+        // https://yangbox.tistory.com/59
         return ret;
     }
     
