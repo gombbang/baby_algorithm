@@ -1,0 +1,132 @@
+import java.util.*;
+
+class Solution {
+    
+    int solution(int[][] land) {
+        int answer = 0;
+        int[][] array = new int[land.length][4];
+        array[0][0] = land[0][0];
+        array[0][1] = land[0][1];
+        array[0][2] = land[0][2];
+        array[0][3] = land[0][3];
+        for (int i = 1; i < land.length; i++) {
+            for (int j = 0; j<4 ; j++) {
+                for (int k = 0; k < 4; k ++) {
+                    if (j != k) {
+                        if (array[i][k] < array[i-1][j] + land[i][k])  {
+                            array[i][k] = array[i-1][j] + land[i][k];
+                        }
+                    }
+                }
+            }
+        }
+        for ( int i = 0 ; i < 4 ; i ++) {
+            if (answer < array[land.length-1][i])
+                answer = array[land.length-1][i];
+        }
+        return answer;
+    }
+}
+
+// // 한 행 : 한번의 기회
+// // 한 열 : 하나의 카드
+// // 조건 : 전 행과 같은 열이 반복될 수 없다.
+// // 이상적인 값을 한번에 찾을 수 없음 -> 모든 경우의 수를 다 뒤져야 함
+// // 
+// // 변수 배열
+// // 1. 최대 값, answer
+// // 2. 움직이는 객체, 
+//     // 전 위치의 열번호 
+//     // 총합
+//     // 현재 행 위치
+// // 매번 뒤지는 경우도 적절하지 않음, 그 다음 순서에서 어떻게 뒤바뀔지 모르므로
+// // ==> 마지막까지 다 내려와서 끝내야 한다.
+// // stack 구조로 시작한다.
+
+// //3 ^ 10만 * 4 => 에바.
+//     private class Person {
+//         int before;
+//         int sum;
+//         int pos;
+        
+//         public Person (int before, int sum, int pos) {
+//             this.before = before;
+//             this.sum = sum;
+//             this.pos = pos;
+//         }
+//     }
+    
+//     int solution(int[][] land) {
+//         int answer = 0;
+
+//         Stack<Person> stack = new Stack<>();
+        
+//         for (int i = 0; i < land[0].length; i++) {
+//             stack.add(new Person(i,land[0][i], 1));
+//         }
+//         Person p = null;
+//         while (!stack.isEmpty()) {
+//             p = stack.pop();
+//             if (p.pos <= land.length-1) {
+//                 for (int i = 0 ; i<land[0].length; i++) {
+//                     if (p.before != i) {
+//                         stack.add(new Person(i, p.sum+land[p.pos][i], p.pos+1));
+//                     }
+//                 }
+//             } else {
+//                 if (answer < p.sum)
+//                     answer = p.sum;
+//             }
+//         }
+
+//         return answer;
+//     }
+
+
+
+// // 매번 내려올때마다 가장 큰 값보다 100보다 작으면 패스?
+// // 너무 제한사항에 갇혀있는 방법
+
+//     private class Person {
+//         int before;
+//         int sum;
+//         int pos;
+        
+//         public Person (int before, int sum, int pos) {
+//             this.before = before;
+//             this.sum = sum;
+//             this.pos = pos;
+//         }
+//     }
+    
+//     int solution(int[][] land) {
+//         int[] array = new int[land.length];
+        
+        
+//         int answer = 0;
+
+//         Queue<Person> q = new LinkedList<>();
+        
+//         for (int i = 0; i < land[0].length; i++) {
+//             q.add(new Person(i,land[0][i], 1));
+//         }
+//         Person p = null;
+//         while (!q.isEmpty()) {
+//             p = q.poll();
+            
+//             if (p.pos == land.length) {
+//                 continue;
+//             } else if (array[p.pos-1] <= p.sum + 100) {
+                
+//                 for (int i = 0 ; i<land[0].length; i++) {
+//                     if (p.before != i) {
+//                         if (array[p.pos] < p.sum + land[p.pos][i])
+//                             array[p.pos] = p.sum + land[p.pos][i];
+//                         q.add(new Person(i, p.sum+land[p.pos][i], p.pos+1));
+//                     }
+//                 }
+//             }
+//         }
+
+//         return array[land.length-1];
+//     }
