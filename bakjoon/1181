@@ -1,0 +1,57 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.util.*;
+
+
+public class Main {
+
+
+    public void solution() throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int n = Integer.parseInt(br.readLine());
+        String[] strList = new String[n];
+        for (int i = 0; i < n; i++) {
+            strList[i] = br.readLine();
+        }
+        Set<String> set = new HashSet<>();
+        set.addAll(Arrays.asList(strList));
+        strList = new String[set.size()];
+        int index = 0;
+        for (String s : set) {
+            strList[index++] = s;
+        }
+
+        Arrays.sort(strList, new Comparator<String>() {
+                    @Override
+                    public int compare(String o1, String o2) {
+                        if (o1.length() == o2.length()) {
+                            return o1.compareTo(o2);
+                        }
+                        return o1.length() - o2.length();
+                    }
+                }
+        );
+
+
+
+        for (int i = 0; i < strList.length; i++) {
+            System.out.println(strList[i]);
+        }
+
+        br.close();
+        // bw.flush();
+        // bw.close();
+    }
+
+
+    public static void main (String[] args) throws Exception {
+        new Main().solution();
+    }
+}
+
+// new Comparator를 자유자제로 쓸 수 있어야 한다, 현재는 IDE의 힘을 빌어 활용하니 원활, 그 만큼의 레벨이 되어야겠다.
+// 숙달이 필요할 것으로 예상해 게시
